@@ -13,20 +13,19 @@ class Media extends Model
 
     protected $table = 'media';
 
-    protected $primaryKey = 'id';
-
     public $incrementing = false;
 
     protected $keyType = 'string';
 
     protected $fillable = [
         'id',
-        'file_name',
-        'file_path',
+        'disk',
+        'directory',
+        'original_name',
+        'filename',
+        'path',
         'mime_type',
+        'extension',
         'size',
-        'type',
-        'related_model_type',
-        'related_model_id',
     ];
 }
