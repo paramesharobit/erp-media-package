@@ -19,11 +19,16 @@ class Media extends Model
 
     protected $keyType = 'string';
 
+    /**
+     * @var list<string>
+     */
     protected $fillable = [
         'id',
-        'file_name',
-        'file_path',
+        'disk',
+        'path',
+        'filename',
         'mime_type',
+        'extension',
         'size',
         'type',
         'related_model_type',
