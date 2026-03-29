@@ -2,9 +2,11 @@
 
 declare(strict_types=1);
 
-namespace ErpMediaPackage\Http\Requests;
+namespace Arobit\ErpMedia\Http\Requests;
 
+use Arobit\ErpMedia\DTOs\StoreMediaData;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 final class StoreMediaRequest extends FormRequest
 {
@@ -13,15 +15,23 @@ final class StoreMediaRequest extends FormRequest
         return true;
     }
 
-    /**
-     * @return array<string, array<int, string>>
-     */
     public function rules(): array
     {
         return [
-            'file' => ['required', 'file', 'mimes:jpg,jpeg,png,gif,webp,pdf,mp4,mov', 'max:20480'],
-            'collection' => ['nullable', 'string', 'max:100'],
-            'name' => ['nullable', 'string', 'max:255'],
+            'file' => ['required', 'file', 'max:10240'],
+            'disk' => ['nullable', 'string'],
+            'directory' => ['nullable', 'string'],
+            'visibility' => ['nullable', Rule::in(['public', 'private'])],
         ];
+    }
+
+    public function toDto(): StoreMediaData
+    {
+        return new StoreMediaData(
+            file: $this->file('file'),
+            disk: $this->input('disk', config('erp-media.disk')),
+            directory: $this->input('directory', config('erp-media.directory')),
+            visibility: $this->input('visibility', config('erp-media.visibility')),
+        );
     }
 }

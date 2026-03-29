@@ -1,39 +1,48 @@
 {
-  "name": "erp/media-package",
-  "description": "Global media package for ERP with JSON API endpoints.",
-  "type": "library",
-  "license": "MIT",
-  "require": {
-    "php": "^8.2",
-    "illuminate/contracts": "^12.0",
-    "illuminate/http": "^12.0",
-    "illuminate/routing": "^12.0",
-    "illuminate/support": "^12.0"
-  },
-  "require-dev": {
-    "orchestra/testbench": "^10.0",
-    "phpunit/phpunit": "^11.0"
-  },
-  "autoload": {
-    "psr-4": {
-      "ErpMediaPackage\\": "src/"
-    }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "ErpMediaPackage\\Tests\\": "tests/"
-    }
-  },
-  "extra": {
-    "laravel": {
-      "providers": [
-        "ErpMediaPackage\\Providers\\ErpMediaServiceProvider"
-      ]
-    }
-  },
-  "scripts": {
-    "test": "phpunit"
-  },
-  "minimum-stability": "stable",
-  "prefer-stable": true
+    "name": "arobit/erp-media",
+    "description": "Laravel media management package for ERP workflows.",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "laravel",
+        "media",
+        "erp",
+        "uuid",
+        "api"
+    ],
+    "require": {
+        "php": "^8.2",
+        "illuminate/contracts": "^12.0",
+        "illuminate/database": "^12.0",
+        "illuminate/http": "^12.0",
+        "illuminate/routing": "^12.0",
+        "illuminate/support": "^12.0"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.20",
+        "orchestra/testbench": "^10.0",
+        "phpunit/phpunit": "^11.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Arobit\\ErpMedia\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Arobit\\ErpMedia\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Arobit\\ErpMedia\\ErpMediaServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
 }

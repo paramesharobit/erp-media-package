@@ -2,28 +2,29 @@
 
 declare(strict_types=1);
 
-namespace ErpMediaPackage\Http\Resources;
+namespace Arobit\ErpMedia\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 final class MediaResource extends JsonResource
 {
-    /**
-     * @return array<string, mixed>
-     */
     public function toArray(Request $request): array
     {
         return [
             'type' => 'media',
-            'id' => (string) data_get($this->resource, 'id'),
+            'id' => $this->resource->getKey(),
             'attributes' => [
-                'name' => data_get($this->resource, 'name'),
-                'collection' => data_get($this->resource, 'collection'),
-                'mime_type' => data_get($this->resource, 'mime_type'),
-                'size' => data_get($this->resource, 'size'),
-                'url' => data_get($this->resource, 'url'),
-                'created_at' => data_get($this->resource, 'created_at'),
+                'disk' => $this->resource->disk,
+                'directory' => $this->resource->directory,
+                'name' => $this->resource->name,
+                'mime_type' => $this->resource->mime_type,
+                'extension' => $this->resource->extension,
+                'size' => $this->resource->size,
+                'path' => $this->resource->path,
+                'metadata' => $this->resource->metadata,
+                'created_at' => $this->resource->created_at,
+                'updated_at' => $this->resource->updated_at,
             ],
         ];
     }
