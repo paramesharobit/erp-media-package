@@ -1,0 +1,30 @@
+{
+  "name": "erp/media-package",
+  "description": "Global media package for ERP modules.",
+  "type": "library",
+  "license": "MIT",
+  "require": {
+    "php": "^8.2",
+    "illuminate/contracts": "^12.0",
+    "illuminate/database": "^12.0",
+    "illuminate/support": "^12.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^11.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Erp\\MediaPackage\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Erp\\MediaPackage\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "test": "phpunit"
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true
+}

@@ -6,6 +6,7 @@ namespace Erp\MediaPackage\Models;
 
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Media extends Model
 {
@@ -19,14 +20,13 @@ class Media extends Model
 
     protected $keyType = 'string';
 
-    protected $fillable = [
-        'id',
-        'file_name',
-        'file_path',
-        'mime_type',
-        'size',
-        'type',
-        'related_model_type',
-        'related_model_id',
-    ];
+    protected $guarded = [];
+
+    /**
+     * @return MorphTo<Model, static>
+     */
+    public function relatedModel(): MorphTo
+    {
+        return $this->morphTo('relatedModel', 'related_model_type', 'related_model_id');
+    }
 }
