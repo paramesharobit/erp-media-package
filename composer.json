@@ -1,4 +1,5 @@
 {
+    "version": "1.0.0",
     "name": "arobit/erp-media",
     "description": "Laravel media management package for ERP workflows.",
     "type": "library",
